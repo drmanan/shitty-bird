@@ -1,0 +1,132 @@
+{
+    "$id": "https://github.com/drmanan/shitty-bird/json-schema/posts.json",
+    "$version":"1.0.0",
+    "$version_code":1,
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "description": "",
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "text": {
+        "type": "string"
+      },
+      "user": {
+        "type": "integer"
+      },
+      "like_count": {
+        "type": "integer"
+      },
+      "repliy_count": {
+        "type": "integer"
+      },
+      "view_count": {
+        "type": "integer"
+      },
+      "in_reply_to": {
+        "type": "integer"
+      },
+      "share_count": {
+        "type": "integer"
+      },
+      "timestamp": {
+        "type": "integer"
+      },
+      "replies": {
+        "type": "array",
+        "items": [
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "text": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "repliy_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "integer"
+              },
+              "view_count": {
+                "type": "integer"
+              },
+              "share_count": {
+                "type": "integer"
+              },
+              "timestamp": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "id",
+              "text",
+              "like_count",
+              "repliy_count",
+              "user",
+              "view_count",
+              "share_count",
+              "timestamp"
+            ]
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "text": {
+                "type": "string"
+              },
+              "like_count": {
+                "type": "integer"
+              },
+              "repliy_count": {
+                "type": "integer"
+              },
+              "user": {
+                "type": "integer"
+              },
+              "view_count": {
+                "type": "integer"
+              },
+              "share_count": {
+                "type": "integer"
+              },
+              "timestamp": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "id",
+              "text",
+              "like_count",
+              "repliy_count",
+              "user",
+              "view_count",
+              "share_count",
+              "timestamp"
+            ]
+          }
+        ]
+      }
+    },
+    "required": [
+      "id",
+      "text",
+      "user",
+      "like_count",
+      "repliy_count",
+      "view_count",
+      "in_reply_to",
+      "share_count",
+      "timestamp",
+      "replies"
+    ]
+  }
