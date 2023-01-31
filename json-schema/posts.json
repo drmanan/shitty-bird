@@ -1,123 +1,12 @@
 {
-    "$id": "https://github.com/drmanan/shitty-bird/json-schema/posts.json",
-    "$version":"1.0.0",
-    "$version_code":1,
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "description": "",
-    "properties": {
-      "id": {
-        "type": "integer"
-      },
-      "text": {
-        "type": "string"
-      },
-      "user": {
-        "type": "integer"
-      },
-      "like_count": {
-        "type": "integer"
-      },
-      "repliy_count": {
-        "type": "integer"
-      },
-      "view_count": {
-        "type": "integer"
-      },
-      "in_reply_to": {
-        "type": "integer"
-      },
-      "share_count": {
-        "type": "integer"
-      },
-      "timestamp": {
-        "type": "integer"
-      },
-      "replies": {
-        "type": "array",
-        "items": [
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "text": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
-              },
-              "repliy_count": {
-                "type": "integer"
-              },
-              "user": {
-                "type": "integer"
-              },
-              "view_count": {
-                "type": "integer"
-              },
-              "share_count": {
-                "type": "integer"
-              },
-              "timestamp": {
-                "type": "integer"
-              }
-            },
-            "required": [
-              "id",
-              "text",
-              "like_count",
-              "repliy_count",
-              "user",
-              "view_count",
-              "share_count",
-              "timestamp"
-            ]
-          },
-          {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "integer"
-              },
-              "text": {
-                "type": "string"
-              },
-              "like_count": {
-                "type": "integer"
-              },
-              "repliy_count": {
-                "type": "integer"
-              },
-              "user": {
-                "type": "integer"
-              },
-              "view_count": {
-                "type": "integer"
-              },
-              "share_count": {
-                "type": "integer"
-              },
-              "timestamp": {
-                "type": "integer"
-              }
-            },
-            "required": [
-              "id",
-              "text",
-              "like_count",
-              "repliy_count",
-              "user",
-              "view_count",
-              "share_count",
-              "timestamp"
-            ]
-          }
-        ]
-      }
-    },
-    "required": [
+  "$schema": "https://json-schema.org/draft/2019-09/schema",
+  "$id": "https://github.com/drmanan/shitty-bird/json-schema/posts.json",
+  "type": "object",
+  "$version": "1.0.0",
+  "$version_code": 1,
+  "default": {},
+  "title": "Root Schema",
+  "required": [
       "id",
       "text",
       "user",
@@ -128,5 +17,216 @@
       "share_count",
       "timestamp",
       "replies"
-    ]
-  }
+  ],
+  "properties": {
+      "id": {
+          "type": "integer",
+          "default": 0,
+          "title": "The id Schema",
+          "examples": [
+              1234567890
+          ]
+      },
+      "text": {
+          "type": "string",
+          "default": "",
+          "title": "The text Schema",
+          "examples": [
+              "Raw tweet text"
+          ]
+      },
+      "user": {
+          "type": "integer",
+          "default": 0,
+          "title": "The user Schema",
+          "examples": [
+              32524515
+          ]
+      },
+      "like_count": {
+          "type": "integer",
+          "default": 0,
+          "title": "The like_count Schema",
+          "examples": [
+              100
+          ]
+      },
+      "repliy_count": {
+          "type": "integer",
+          "default": 0,
+          "title": "The repliy_count Schema",
+          "examples": [
+              10
+          ]
+      },
+      "view_count": {
+          "type": "integer",
+          "default": 0,
+          "title": "The view_count Schema",
+          "examples": [
+              1000
+          ]
+      },
+      "in_reply_to": {
+          "type": "integer",
+          "default": 0,
+          "title": "The in_reply_to Schema",
+          "examples": [
+              1234567890
+          ]
+      },
+      "share_count": {
+          "type": "integer",
+          "default": 0,
+          "title": "The share_count Schema",
+          "examples": [
+              10
+          ]
+      },
+      "timestamp": {
+          "type": "integer",
+          "default": 0,
+          "title": "The timestamp Schema",
+          "examples": [
+              1674898651
+          ]
+      },
+      "replies": {
+          "type": "array",
+          "default": [],
+          "title": "The replies Schema",
+          "items": {
+              "type": "object",
+              "default": {},
+              "title": "A Schema",
+              "required": [
+                  "id",
+                  "text",
+                  "like_count",
+                  "repliy_count",
+                  "user",
+                  "view_count",
+                  "share_count",
+                  "timestamp"
+              ],
+              "properties": {
+                  "id": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The id Schema",
+                      "examples": [
+                          1234567890
+                      ]
+                  },
+                  "text": {
+                      "type": "string",
+                      "default": "",
+                      "title": "The text Schema",
+                      "examples": [
+                          "Raw tweet text"
+                      ]
+                  },
+                  "like_count": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The like_count Schema",
+                      "examples": [
+                          50
+                      ]
+                  },
+                  "repliy_count": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The repliy_count Schema",
+                      "examples": [
+                          10
+                      ]
+                  },
+                  "user": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The user Schema",
+                      "examples": [
+                          245610214
+                      ]
+                  },
+                  "view_count": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The view_count Schema",
+                      "examples": [
+                          1000
+                      ]
+                  },
+                  "share_count": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The share_count Schema",
+                      "examples": [
+                          10
+                      ]
+                  },
+                  "timestamp": {
+                      "type": "integer",
+                      "default": 0,
+                      "title": "The timestamp Schema",
+                      "examples": [
+                          1674898651
+                      ]
+                  }
+              },
+              "examples": [
+                  {
+                      "id": 1234567890,
+                      "text": "Raw tweet text",
+                      "like_count": 50,
+                      "repliy_count": 10,
+                      "user": 245610214,
+                      "view_count": 1000,
+                      "share_count": 10,
+                      "timestamp": 1674898651
+                  }
+              ]
+          },
+          "examples": [
+              [
+                  {
+                      "id": 1234567890,
+                      "text": "Raw tweet text",
+                      "like_count": 50,
+                      "repliy_count": 10,
+                      "user": 245610214,
+                      "view_count": 1000,
+                      "share_count": 10,
+                      "timestamp": 1674898651
+                  }
+              ]
+          ]
+      }
+  },
+  "examples": [
+      {
+          "id": 1234567890,
+          "text": "Raw tweet text",
+          "user": 32524515,
+          "like_count": 100,
+          "repliy_count": 10,
+          "view_count": 1000,
+          "in_reply_to": 1234567890,
+          "share_count": 10,
+          "timestamp": 1674898651,
+          "replies": [
+              {
+                  "id": 1234567890,
+                  "text": "Raw tweet text",
+                  "like_count": 50,
+                  "repliy_count": 10,
+                  "user": 245610214,
+                  "view_count": 1000,
+                  "share_count": 10,
+                  "timestamp": 1674898651
+              }
+          ]
+      }
+  ]
+}
