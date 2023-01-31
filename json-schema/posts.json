@@ -5,7 +5,11 @@
   "$version": "1.0.0",
   "$version_code": 1,
   "default": {},
-  "title": "Root Schema",
+  "title": "Posts",
+  "description": "Structure of Posts objects. This is the structue of a single tweet.",
+  "deprecated": false,
+  "readOnly": true,
+  "$comment": "This will be something that will be received from the backend. Read only object.",
   "required": [
       "id",
       "text",
@@ -13,16 +17,15 @@
       "like_count",
       "repliy_count",
       "view_count",
-      "in_reply_to",
       "share_count",
-      "timestamp",
-      "replies"
+      "timestamp"
   ],
   "properties": {
       "id": {
+          "$not_null": true,
           "type": "integer",
           "default": 0,
-          "title": "The id Schema",
+          "title": "Post id",
           "examples": [
               1234567890
           ]
@@ -30,15 +33,15 @@
       "text": {
           "type": "string",
           "default": "",
-          "title": "The text Schema",
+          "title": "Test of the post",
           "examples": [
               "Raw tweet text"
           ]
       },
-      "user": {
+      "user_id": {
           "type": "integer",
           "default": 0,
-          "title": "The user Schema",
+          "title": "User id",
           "examples": [
               32524515
           ]
@@ -46,8 +49,10 @@
       "like_count": {
           "type": "integer",
           "default": 0,
-          "title": "The like_count Schema",
+          "title": "Like count",
+          "description": "Like count of this post",
           "examples": [
+              10,
               100
           ]
       },
@@ -111,6 +116,7 @@
               ],
               "properties": {
                   "id": {
+                      "$not_null": true,
                       "type": "integer",
                       "default": 0,
                       "title": "The id Schema",
