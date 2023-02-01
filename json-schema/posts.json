@@ -1,434 +1,467 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/drmanan/shitty-bird/json-schema/posts.json",
-  "type": "object",
-  "$version": "1.0.0",
-  "$version_code": 1,
-  "default": {},
-  "title": "Posts",
-  "description": "Structure of Posts objects. This is the structue of a single tweet.",
-  "deprecated": false,
-  "readOnly": true,
-  "$comment": "This will be something that will be received from the backend. Read only object. There will be additional metadata with response.",
-  "required": [
-      "id",
-      "text",
-      "user",
-      "like_count",
-      "repliy_count",
-      "view_count",
-      "share_count",
-      "timestamp"
-  ],
-  "properties": {
-      "id": {
-          "type": "integer",
-          "default": 0,
-          "title": "Post Id",
-          "description": "The id of the post",
-          "examples": [
-              1234567890
-          ]
-      },
-      "text": {
-          "type": "string",
-          "default": "",
-          "title": "Text of the post",
-          "examples": [
-              "Raw tweet text"
-          ]
-      },
-      "user": {
-          "type": "object",
-          "default": {},
-          "title": "Posting user",
-          "description": "Posting user information",
-          "required": [
-              "id",
-              "name",
-              "picture"
-          ],
-          "properties": {
-              "id": {
-                  "type": "integer",
-                  "default": 0,
-                  "title": "User Id",
-                  "description": "The id of the user",
-                  "examples": [
-                      32524515
-                  ]
-              },
-              "name": {
-                  "type": "string",
-                  "default": "",
-                  "title": "Display name of the User",
-                  "examples": [
-                      "User's display name"
-                  ]
-              },
-              "picture": {
-                  "type": "object",
-                  "default": {
-                    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
-                  },
-                  "title": "Profile picture",
-                  "description": "Profile picture of the user.",
-                  "required": [
-                      "thumbnail"
-                  ],
-                  "properties": {
-                      "large": {
-                          "type": "string",
-                          "default": "",
-                          "title": "Large image of the User",
-                          "description": "Large image of the user",
-                          "examples": [
-                              "https://randomuser.me/api/portraits/women/95.jpg"
-                          ]
-                      },
-                      "medium": {
-                          "type": "string",
-                          "default": "",
-                          "title": "User image",
-                          "description": "Medium image of the user",
-                          "examples": [
-                              "https://randomuser.me/api/portraits/med/women/95.jpg"
-                          ]
-                      },
-                      "thumbnail": {
-                          "type": "string",
-                          "default": "",
-                          "title": "Thumbnail",
-                          "description":"The thumbnail of Image of the user",
-                          "examples": [
-                              "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                          ]
-                      }
-                  },
-                  "examples": [
-                      {
-                          "large": "https://randomuser.me/api/portraits/men/5.jpg",
-                          "medium": "https://randomuser.me/api/portraits/med/men/5.jpg",
-                          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/5.jpg"
-                      }
-                  ]
-              }
-          },
-          "examples": [
-              {
-                  "id": 32524515,
-                  "name": "User's display name",
-                  "picture": {
-                      "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                      "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                  }
-              }
-          ]
-      },
-      "like_count": {
-          "type": "integer",
-          "default": 0,
-          "title": "Likes count",
-          "description": "The number of likes to the post.",
-          "$comment":"The likes array, that is who liked the post has to be requested seperately.",
-          "examples": [
-              100
-          ]
-      },
-      "repliy_count": {
-          "type": "integer",
-          "default": 0,
-          "title": "Replies count",
-          "description": "The number of replies to the post.",
-          "$comment":"The replies array is a seperate object in the same hirarchy.",
-          "examples": [
-              10
-          ]
-      },
-      "view_count": {
-          "type": "integer",
-          "default": 0,
-          "title": "Views",
-          "description": "The number of views to the post. How many times the post has been seen.",
-          "examples": [
-              1000
-          ]
-      },
-      "in_reply_to": {
-          "type": "integer",
-          "default": 0,
-          "title": "In reply to post",
-          "description": "if this post is in reply to another post, then the id of the orignal post.",
-          "$comment":"Will be null if this is not a reply to another post, this property can be absent altogather",
-          "examples": [
-              1234567890
-          ]
-      },
-      "share_count": {
-          "type": "integer",
-          "default": 0,
-          "title": "Share Count",
-          "description": "The number of shares to the post.",
-          "$comment":"This is the combined count of retewwts and quotes",
-          "examples": [
-              10
-          ]
-      },
-      "timestamp": {
-          "type": "integer",
-          "default": 0,
-          "title": "Timestamp",
-          "description": "The timestamp of the post.",
-          "$comment": "In seconds since the epoch. aka Unix time",
-          "examples": [
-              1674898651
-          ]
-      },
-      "replies": {
-          "type": "array",
-          "default": [],
-          "title": "Replies",
-          "object_type": "posts",
-          "description": "An array of replies to the post. An array of type Posts",
-          "$comment": "Can be an empty array or null or the entity will be missing.",
-          "items": {
-              "type": "object",
-              "default": {},
-              "title": "Post",
-              "required": [
-                  "id",
-                  "text",
-                  "like_count",
-                  "user",
-                  "view_count",
-                  "share_count",
-                  "timestamp"
-              ],
-              "properties": {
-                  "id": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The id Schema",
-                      "examples": [
-                          1234567890
-                      ]
-                  },
-                  "text": {
-                      "type": "string",
-                      "default": "",
-                      "title": "The text Schema",
-                      "examples": [
-                          "Raw tweet text"
-                      ]
-                  },
-                  "like_count": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The like_count Schema",
-                      "examples": [
-                          50
-                      ]
-                  },
-                  "repliy_count": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The repliy_count Schema",
-                      "examples": [
-                          10
-                      ]
-                  },
-                  "user": {
-                      "type": "object",
-                      "default": {},
-                      "title": "The user Schema",
-                      "required": [
-                          "id",
-                          "name",
-                          "picture"
-                      ],
-                      "properties": {
-                          "id": {
-                              "type": "integer",
-                              "default": 0,
-                              "title": "The id Schema",
-                              "examples": [
-                                  245610214
-                              ]
-                          },
-                          "name": {
-                              "type": "string",
-                              "default": "",
-                              "title": "The name Schema",
-                              "examples": [
-                                  "User's display name"
-                              ]
-                          },
-                          "picture": {
-                              "type": "object",
-                              "default": {},
-                              "title": "The picture Schema",
-                              "required": [
-                                  "large",
-                                  "medium",
-                                  "thumbnail"
-                              ],
-                              "properties": {
-                                  "large": {
-                                      "type": "string",
-                                      "default": "",
-                                      "title": "The large Schema",
-                                      "examples": [
-                                          "https://randomuser.me/api/portraits/women/95.jpg"
-                                      ]
-                                  },
-                                  "medium": {
-                                      "type": "string",
-                                      "default": "",
-                                      "title": "The medium Schema",
-                                      "examples": [
-                                          "https://randomuser.me/api/portraits/med/women/95.jpg"
-                                      ]
-                                  },
-                                  "thumbnail": {
-                                      "type": "string",
-                                      "default": "",
-                                      "title": "The thumbnail Schema",
-                                      "examples": [
-                                          "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                                      ]
-                                  }
-                              },
-                              "examples": [
-                                  {
-                                      "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                                      "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                                      "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                                  }
-                              ]
-                          }
-                      },
-                      "examples": [
-                          {
-                              "id": 245610214,
-                              "name": "User's display name",
-                              "picture": {
-                                  "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                                  "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                                  "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                              }
-                          }
-                      ]
-                  },
-                  "view_count": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The view_count Schema",
-                      "examples": [
-                          1000
-                      ]
-                  },
-                  "share_count": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The share_count Schema",
-                      "examples": [
-                          10
-                      ]
-                  },
-                  "timestamp": {
-                      "type": "integer",
-                      "default": 0,
-                      "title": "The timestamp Schema",
-                      "examples": [
-                          1674898651
-                      ]
-                  }
-              },
-              "examples": [
-                  {
-                      "id": 1234567890,
-                      "text": "Raw tweet text",
-                      "like_count": 50,
-                      "repliy_count": 10,
-                      "user": {
-                          "id": 245610214,
-                          "name": "User's display name",
-                          "picture": {
-                              "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                              "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                              "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                          }
-                      },
-                      "view_count": 1000,
-                      "share_count": 10,
-                      "timestamp": 1674898651
-                  }
-              ]
-          },
-          "examples": [
-              [
-                  {
-                      "id": 1234567890,
-                      "text": "Raw tweet text",
-                      "like_count": 50,
-                      "repliy_count": 10,
-                      "user": {
-                          "id": 245610214,
-                          "name": "User's display name",
-                          "picture": {
-                              "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                              "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                              "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                          }
-                      },
-                      "view_count": 1000,
-                      "share_count": 10,
-                      "timestamp": 1674898651
-                  }
-              ]
-          ]
-      }
-  },
-  "examples": [
-      {
-          "id": 1234567890,
-          "text": "Raw tweet text",
-          "user": {
-              "id": 32524515,
-              "name": "User's display name",
-              "picture": {
-                  "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                  "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                  "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-              }
-          },
-          "like_count": 100,
-          "repliy_count": 10,
-          "view_count": 1000,
-          "in_reply_to": 1234567890,
-          "share_count": 10,
-          "timestamp": 1674898651,
-          "replies": [
-              {
-                  "id": 1234567890,
-                  "text": "Raw tweet text",
-                  "like_count": 50,
-                  "repliy_count": 10,
-                  "user": {
-                      "id": 245610214,
-                      "name": "User's display name",
-                      "picture": {
-                          "large": "https://randomuser.me/api/portraits/women/95.jpg",
-                          "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
-                          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
-                      }
-                  },
-                  "view_count": 1000,
-                  "share_count": 10,
-                  "timestamp": 1674898651
-              }
-          ]
-      }
-  ]
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://github.com/drmanan/shitty-bird/json-schema/posts.json",
+    "type": "object",
+    "$version": "1.0.0",
+    "$version_code": 1,
+    "default": {},
+    "title": "Posts",
+    "description": "Structure of Posts objects. This is the structue of a single tweet.",
+    "deprecated": false,
+    "readOnly": true,
+    "$comment": "This will be something that will be received from the backend. Read only object. There will be additional metadata with response.",
+    "required": [
+        "id",
+        "text",
+        "user",
+        "like_count",
+        "repliy_count",
+        "view_count",
+        "share_count",
+        "timestamp"
+    ],
+    "properties": {
+        "id": {
+            "type": "integer",
+            "default": 0,
+            "title": "Post Id",
+            "description": "The id of the post",
+            "examples": [
+                1234567890
+            ]
+        },
+        "text": {
+            "type": "string",
+            "default": "",
+            "title": "Text of the post",
+            "examples": [
+                "Raw tweet text"
+            ]
+        },
+        "user": {
+            "type": "object",
+            "default": {},
+            "title": "Posting user",
+            "description": "Posting user information",
+            "required": [
+                "id",
+                "name",
+                "picture"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "default": 0,
+                    "title": "User Id",
+                    "description": "The id of the user",
+                    "examples": [
+                        32524515
+                    ]
+                },
+                "name": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Display name of the User",
+                    "examples": [
+                        "User's display name"
+                    ]
+                },
+                "picture": {
+                    "type": "object",
+                    "default": {
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/1.jpg"
+                    },
+                    "title": "Profile picture",
+                    "description": "Profile picture of the user.",
+                    "required": [
+                        "thumbnail"
+                    ],
+                    "properties": {
+                        "large": {
+                            "type": "string",
+                            "default": "",
+                            "title": "Large image of the User",
+                            "description": "Large image of the user",
+                            "examples": [
+                                "https://randomuser.me/api/portraits/women/95.jpg"
+                            ]
+                        },
+                        "medium": {
+                            "type": "string",
+                            "default": "",
+                            "title": "User image",
+                            "description": "Medium image of the user",
+                            "examples": [
+                                "https://randomuser.me/api/portraits/med/women/95.jpg"
+                            ]
+                        },
+                        "thumbnail": {
+                            "type": "string",
+                            "default": "",
+                            "title": "Thumbnail",
+                            "description": "The thumbnail of Image of the user",
+                            "examples": [
+                                "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                            ]
+                        }
+                    },
+                    "examples": [
+                        {
+                            "large": "https://randomuser.me/api/portraits/men/5.jpg",
+                            "medium": "https://randomuser.me/api/portraits/med/men/5.jpg",
+                            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/5.jpg"
+                        }
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "id": 32524515,
+                    "name": "User's display name",
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/women/95.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                    }
+                }
+            ]
+        },
+        "like_count": {
+            "type": "integer",
+            "default": 0,
+            "title": "Likes count",
+            "description": "The number of likes to the post.",
+            "$comment": "The likes array, that is who liked the post has to be requested seperately.",
+            "examples": [
+                100
+            ]
+        },
+        "repliy_count": {
+            "type": "integer",
+            "default": 0,
+            "title": "Replies count",
+            "description": "The number of replies to the post.",
+            "$comment": "The replies array is a seperate object in the same hirarchy.",
+            "examples": [
+                10
+            ]
+        },
+        "view_count": {
+            "type": "integer",
+            "default": 0,
+            "title": "Views",
+            "description": "The number of views to the post. How many times the post has been seen.",
+            "examples": [
+                1000
+            ]
+        },
+        "in_reply_to": {
+            "type": "integer",
+            "default": 0,
+            "title": "In reply to post",
+            "description": "if this post is in reply to another post, then the id of the orignal post.",
+            "$comment": "Will be null if this is not a reply to another post, this property can be absent altogather",
+            "examples": [
+                1234567890
+            ]
+        },
+        "share_count": {
+            "type": "integer",
+            "default": 0,
+            "title": "Share Count",
+            "description": "The number of shares to the post.",
+            "$comment": "This is the combined count of retewwts and quotes",
+            "examples": [
+                10
+            ]
+        },
+        "timestamp": {
+            "type": "integer",
+            "default": 0,
+            "title": "Timestamp",
+            "description": "The timestamp of the post.",
+            "$comment": "In seconds since the epoch. aka Unix time",
+            "examples": [
+                1674898651
+            ]
+        },
+        "replies": {
+            "type": "array",
+            "default": [],
+            "title": "Replies",
+            "object_type": "posts",
+            "description": "An array of replies to the post. An array of type Posts",
+            "$comment": "Can be an empty array or null or the entity will be missing.",
+            "items": {
+                "type": "object",
+                "default": {},
+                "title": "Post",
+                "required": [
+                    "id",
+                    "text",
+                    "like_count",
+                    "user",
+                    "view_count",
+                    "share_count",
+                    "timestamp"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The id Schema",
+                        "examples": [
+                            1234567890
+                        ]
+                    },
+                    "text": {
+                        "type": "string",
+                        "default": "",
+                        "title": "The text Schema",
+                        "examples": [
+                            "Raw tweet text"
+                        ]
+                    },
+                    "like_count": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The like_count Schema",
+                        "examples": [
+                            50
+                        ]
+                    },
+                    "repliy_count": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The repliy_count Schema",
+                        "examples": [
+                            10
+                        ]
+                    },
+                    "user": {
+                        "type": "object",
+                        "default": {},
+                        "title": "The user Schema",
+                        "required": [
+                            "id",
+                            "name",
+                            "picture"
+                        ],
+                        "properties": {
+                            "id": {
+                                "type": "integer",
+                                "default": 0,
+                                "title": "The id Schema",
+                                "examples": [
+                                    245610214
+                                ]
+                            },
+                            "name": {
+                                "type": "string",
+                                "default": "",
+                                "title": "The name Schema",
+                                "examples": [
+                                    "User's display name"
+                                ]
+                            },
+                            "picture": {
+                                "type": "object",
+                                "default": {},
+                                "title": "The picture Schema",
+                                "required": [
+                                    "large",
+                                    "medium",
+                                    "thumbnail"
+                                ],
+                                "properties": {
+                                    "large": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The large Schema",
+                                        "examples": [
+                                            "https://randomuser.me/api/portraits/women/95.jpg"
+                                        ]
+                                    },
+                                    "medium": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The medium Schema",
+                                        "examples": [
+                                            "https://randomuser.me/api/portraits/med/women/95.jpg"
+                                        ]
+                                    },
+                                    "thumbnail": {
+                                        "type": "string",
+                                        "default": "",
+                                        "title": "The thumbnail Schema",
+                                        "examples": [
+                                            "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                                        ]
+                                    }
+                                },
+                                "examples": [
+                                    {
+                                        "large": "https://randomuser.me/api/portraits/women/95.jpg",
+                                        "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
+                                        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                                    }
+                                ]
+                            }
+                        },
+                        "examples": [
+                            {
+                                "id": 245610214,
+                                "name": "User's display name",
+                                "picture": {
+                                    "large": "https://randomuser.me/api/portraits/women/95.jpg",
+                                    "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
+                                    "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                                }
+                            }
+                        ]
+                    },
+                    "view_count": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The view_count Schema",
+                        "examples": [
+                            1000
+                        ]
+                    },
+                    "share_count": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The share_count Schema",
+                        "examples": [
+                            10
+                        ]
+                    },
+                    "timestamp": {
+                        "type": "integer",
+                        "default": 0,
+                        "title": "The timestamp Schema",
+                        "examples": [
+                            1674898651
+                        ]
+                    }
+                },
+                "examples": [
+                    {
+                        "id": 1234567890,
+                        "text": "Raw tweet text",
+                        "like_count": 50,
+                        "repliy_count": 10,
+                        "user": {
+                            "id": 245610214,
+                            "name": "User's display name",
+                            "picture": {
+                                "large": "https://randomuser.me/api/portraits/women/95.jpg",
+                                "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
+                                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                            }
+                        },
+                        "view_count": 1000,
+                        "share_count": 10,
+                        "timestamp": 1674898651
+                    }
+                ]
+            },
+            "examples": [
+                [
+                    {
+                        "id": 1234567890,
+                        "text": "Raw tweet text",
+                        "like_count": 50,
+                        "repliy_count": 10,
+                        "user": {
+                            "id": 245610214,
+                            "name": "User's display name",
+                            "picture": {
+                                "large": "https://randomuser.me/api/portraits/women/95.jpg",
+                                "medium": "https://randomuser.me/api/portraits/med/women/95.jpg",
+                                "thumbnail": "https://randomuser.me/api/portraits/thumb/women/95.jpg"
+                            }
+                        },
+                        "view_count": 1000,
+                        "share_count": 10,
+                        "timestamp": 1674898651
+                    }
+                ]
+            ]
+        },
+        "pages": {
+            "type": "object",
+            "default": {},
+            "title": "Pages",
+            "description":"Paginations for replies",
+            "required": [],
+            "properties": {
+                "prev": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Previous Page",
+                    "description":"Previous page of replies if available",
+                    "$comment":"has two attributes, page number and limit",
+                    "examples": [
+                        "?page=1&limit=50"
+                    ]
+                },
+                "next": {
+                    "type": "string",
+                    "default": "",
+                    "title": "Next Page",
+                    "description":"Next page of replies if available",
+                    "$comment":"has two attributes, page number and limit",
+                    "examples": [
+                        "?page=3&limit=50"
+                    ]
+                }
+            },
+            "examples": [
+                {
+                    "prev": "?page=1&limit=50",
+                    "next": "?page=3&limit=50"
+                }
+            ]
+        }
+    },
+    "examples": [
+        {
+            "id": 1234567890,
+            "text": "Raw tweet text",
+            "user": 32524515,
+            "like_count": 100,
+            "repliy_count": 10,
+            "view_count": 1000,
+            "in_reply_to": 1234567890,
+            "share_count": 10,
+            "timestamp": 1674898651,
+            "replies": [
+                {
+                    "id": 1234567890,
+                    "text": "Raw tweet text",
+                    "like_count": 50,
+                    "repliy_count": 10,
+                    "user": 245610214,
+                    "view_count": 1000,
+                    "share_count": 10,
+                    "timestamp": 1674898651
+                },
+                {
+                    "id": 1234567890,
+                    "text": "Raw tweet text",
+                    "like_count": 50,
+                    "repliy_count": 10,
+                    "user": 51247536,
+                    "view_count": 1000,
+                    "share_count": 10,
+                    "timestamp": 1674898651
+                }
+            ],
+            "pages": {
+                "prev": "?page=1&limit=50",
+                "next": "?page=3&limit=50"
+            }
+        }
+    ]
 }

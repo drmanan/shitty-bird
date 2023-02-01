@@ -7,11 +7,35 @@
 - Users will be notified when someone likes their posts, replies or reshares them and when someone follows them.
 - Users and posts can be searched.
 
+### I will be disscussing both high-level (system design) and low-level design (software design) of a Twitter like platform.
+
+#### // TODO: compose specific pages for the following heads
+
+- Introduction
+    1. Definition of High-level system design
+    1. Overview of Twitter
+- Overview of High-level System Design for Twitter
+    1. Infrastructure
+    1. Storage
+    1. Data Processing
+    1. Security
+- System Architecture
+    1. Client-Server Model
+    1. Database Architecture
+    1. Application Architecture
+- Components of the System
+    1. Frontend
+    1. Backend
+    1. APIs
+    1. Databases
+
 ---
 
 ### Inspiration source
 
 > [A discussion on Scaler Academy forum](https://github.com/scaleracademy/open-source-projects/discussions/81)
+
+--
 
 ### Progress markers
 
@@ -187,7 +211,7 @@ The latest schema can be found [here](json-schema/posts.json)
  "like_count": 100,
  "repliy_count": 10,
  "view_count": 1000,
- "in_reply_to": 1234567890  // can be null or id of tweet
+ "in_reply_to": 1234567890, // can be null or id of tweet
  "share_count": 10,
  "timestamp": 1674898651,   // Timestamp of post, in epoch seconds
  "replies": [{              // Same structure as post, without in_reply_to
