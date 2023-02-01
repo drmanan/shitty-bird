@@ -177,6 +177,8 @@ mentions|array<{name: string, id: uuid}>
 
 > Version 1
 
+The latest schema can be found [here](json-schema/posts.json)
+
 ```json V1
 {
  "id": 1234567890,

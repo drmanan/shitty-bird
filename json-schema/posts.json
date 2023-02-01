@@ -9,7 +9,7 @@
   "description": "Structure of Posts objects. This is the structue of a single tweet.",
   "deprecated": false,
   "readOnly": true,
-  "$comment": "This will be something that will be received from the backend. Read only object.",
+  "$comment": "This will be something that will be received from the backend. Read only object. There will be additional metadata with response.",
   "required": [
       "id",
       "text",
@@ -189,6 +189,7 @@
           "type": "array",
           "default": [],
           "title": "Replies",
+          "object_type": "posts",
           "description": "An array of replies to the post. An array of type Posts",
           "$comment": "Can be an empty array or null or the entity will be missing.",
           "items": {
