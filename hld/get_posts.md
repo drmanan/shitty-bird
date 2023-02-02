@@ -2,13 +2,15 @@
 
 This idea is similar to any social media feed or timeline.
 
-## End point: **GET /posts**
+## End point: **GET** ***/posts***
 
 ## Use case
 
 > Gathering requirements and scope the problem.
 
-### **SCOPE**: Lets limit our thought process to just serving user a list of tweets here
+### **SCOPE**
+
+> Lets limit our thought process to just serving user a list of tweets here
 
 - User can view the list of his personal tweets.
 - User can view the list of tweets from another specific user.
@@ -26,6 +28,8 @@ This idea is similar to any social media feed or timeline.
 
 #### Future scope
 
+> *Can also be refered to as out of scope*
+
 - For user's home/timeline,
   - Tweets from influencers to be added to home feed, inspite of following or not following.
   - Add tweets from other users with
@@ -39,3 +43,13 @@ This idea is similar to any social media feed or timeline.
     - If tweets have a visibility attribute
 - More analytics
   - Possible audiences estimates
+
+### Assumptions and calculations
+
+Every second, on average, around 6,000 tweets.
+or, 350,000 tweets sent per minute
+or, 500 million tweets sent each day
+or, 200 billion tweets per year. [(source)](https://www.dsayce.com/social-media/tweets-day/)
+
+Twitter had 368 million monthly active users in 2022. [(source)](https://www.businessofapps.com/data/twitter-statistics/)
+
