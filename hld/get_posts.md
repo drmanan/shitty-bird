@@ -30,6 +30,10 @@ This idea is similar to any social media feed or timeline.
 
 > *Can also be refered to as out of scope*
 
+- Midea support
+  - Images, 4 at most
+  - Video+
+  - URLs
 - For user's home/timeline,
   - Tweets from influencers to be added to home feed, inspite of following or not following.
   - Add tweets from other users with
@@ -44,12 +48,35 @@ This idea is similar to any social media feed or timeline.
 - More analytics
   - Possible audiences estimates
 
-### Assumptions and calculations
 
-Every second, on average, around 6,000 tweets.
-or, 350,000 tweets sent per minute
-or, 500 million tweets sent each day
-or, 200 billion tweets per year. [(source)](https://www.dsayce.com/social-media/tweets-day/)
+## Assumptions and calculations
 
-Twitter had 368 million monthly active users in 2022. [(source)](https://www.businessofapps.com/data/twitter-statistics/)
+- Twitter has 365 million monthly active users.
+- These yser generate around 500 billion read requests per month.
+- Viewing timeliness/feeds should be fast. 
+- Twitter is a **read-heavy** service.
+  - Should be optimised for fast reading of tweets.
 
+### Calculations
+
+#### Size of a tweet
+
+- tweet_id: Long Integer: 8 Bytes.
+  - Using Long as Int has a limit of 2 billion digits.
+  - Long has 9 quintillions: 9 x 10^18 possible values.
+- text: String, max. 140 characters: 140 Bytes.
+- user_id: The person who has tweeted this: Integer 4 Bytes.
+  - User Id is in Integer, reasons are given [here](user.md).
+- like_count: Integer: 4 Bytes.
+- reply_count: Integer: 4 Bytes.
+- viiw_count: Integer: 4 Bytes.
+- shares_count: Integer: 4 Bytes.
+- in_reply_to: Long Integer: 8 Bytes
+  - tweet_id of a tweet that the user has replie to.
+- timestamp: Long Integer: 8 Bytes.
+  - in Epoch Time Seconds.
+  - I am an advocate of epoch time as ISO time takes a lot more space
+    - Consider `2000-10-31T01:30:00.000Z+05:30` is a 30-character string, hence takes atleast 30 Bytes if you caount the characters, This is a 32 Byte data structure in reality.
+    - Epoch time Seconds take 8 Bytes.
+    - Epoch and ISO have similar coverage
+- 

@@ -205,7 +205,7 @@ mentions|array<{name: string, id: uuid}>
 
 The latest schema can be found [here](json-schema/posts.json). Better examples can be found [here](json-schema/posts.json). Please refer to the tailing part of the schema as they are the examples generated through the schema itself.
 
-```json V1
+```json V1 // TODO Midea
 {
  "id": 1234567890,
  "text": "Raw tweet text",  // String including @ and #, supports emoji

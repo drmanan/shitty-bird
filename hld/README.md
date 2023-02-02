@@ -9,3 +9,7 @@
 [(source)](https://www.dsayce.com/social-media/tweets-day/)
 
 - Twitter had 368 million monthly active users in 2022. [(source)](https://www.businessofapps.com/data/twitter-statistics/)
+
+- Traffic is not evenly distributed.
+- Posting a tweet should be fast enough.
+  - Delivering a tweet to your followers should be fast enough unless you have followers in hunderd thousands or millions.
