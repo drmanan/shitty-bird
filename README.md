@@ -65,6 +65,8 @@
      - name
      - email id
      - contact no
+       - authenticating user
+       - authentication of ***verified*** account
      - bio
 2. Posts
      - author
@@ -165,7 +167,7 @@ mentions|array<{name: string, id: uuid}>
 
 ### Auth 🔐
 
-⬜ **POST /auth/login**\
+⬜ **POST /auth/login**
 > Login and get auth token
 <br\>
 
@@ -201,7 +203,7 @@ mentions|array<{name: string, id: uuid}>
 
 > Version 1
 
-The latest schema can be found [here](json-schema/posts.json)
+The latest schema can be found [here](json-schema/posts.json). Better examples can be found [here](json-schema/posts.json). Please refer to the tailing part of the schema as they are the examples generated through the schema itself.
 
 ```json V1
 {
@@ -234,14 +236,18 @@ The latest schema can be found [here](json-schema/posts.json)
    "share_count": 10,
    "timestamp": 1674898651
   }
- ]
+ ],
+  "replies_pages": {
+    "prev": "?page=1&limit=50",
+    "next": "?page=3&limit=50"
+  }
 }
 ```
 
 > Version 2 \
 > // TODO ⬜
 
-⬜ **GET /posts 📃**
+⬜ [**GET /posts 📃**](hld/get_posts.md)
 > Either Empty or takes one of the following parameters
 
 | **query** | *definition*|

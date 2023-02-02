@@ -6,10 +6,10 @@
     "$version_code": 1,
     "default": {},
     "title": "Posts",
-    "description": "Structure of Posts objects. This is the structue of a single tweet.",
+    "description": "Structure of Posts objects. This is the structure of a single tweet.",
     "deprecated": false,
     "readOnly": true,
-    "$comment": "This will be something that will be received from the backend. Read only object. There will be additional metadata with response.",
+    "$comment": "This will be something that will be received from the backend. Read only object. There will be additional metadata with a response.",
     "required": [
         "id",
         "text",
@@ -131,7 +131,7 @@
             "default": 0,
             "title": "Likes count",
             "description": "The number of likes to the post.",
-            "$comment": "The likes array, that is who liked the post has to be requested seperately.",
+            "$comment": "The likes array, that is who liked the post has to be requested separately.",
             "examples": [
                 100
             ]
@@ -141,7 +141,7 @@
             "default": 0,
             "title": "Replies count",
             "description": "The number of replies to the post.",
-            "$comment": "The replies array is a seperate object in the same hirarchy.",
+            "$comment": "The replies array is a separate object in the same hierarchy.",
             "examples": [
                 10
             ]
@@ -159,8 +159,8 @@
             "type": "integer",
             "default": 0,
             "title": "In reply to post",
-            "description": "if this post is in reply to another post, then the id of the orignal post.",
-            "$comment": "Will be null if this is not a reply to another post, this property can be absent altogather",
+            "description": "if this post is in reply to another post, then the id of the original post.",
+            "$comment": "Will be null if this is not a reply to another post, this property can be absent altogether",
             "examples": [
                 1234567890
             ]
@@ -170,7 +170,7 @@
             "default": 0,
             "title": "Share Count",
             "description": "The number of shares to the post.",
-            "$comment": "This is the combined count of retewwts and quotes",
+            "$comment": "This is the combined count of retweets and quotes",
             "examples": [
                 10
             ]
