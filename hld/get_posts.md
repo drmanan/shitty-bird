@@ -48,12 +48,11 @@ This idea is similar to any social media feed or timeline.
 - More analytics
   - Possible audiences estimates
 
-
 ## Assumptions and calculations
 
 - Twitter has 365 million monthly active users.
-- These yser generate around 500 billion read requests per month.
-- Viewing timeliness/feeds should be fast. 
+- These generate around 500 billion read requests per month.
+- Viewing timeliness/feeds should be fast.
 - Twitter is a **read-heavy** service.
   - Should be optimised for fast reading of tweets.
 
@@ -79,4 +78,14 @@ This idea is similar to any social media feed or timeline.
     - Consider `2000-10-31T01:30:00.000Z+05:30` is a 30-character string, hence takes atleast 30 Bytes if you caount the characters, This is a 32 Byte data structure in reality.
     - Epoch time Seconds take 8 Bytes.
     - Epoch and ISO have similar coverage
-- 
+- **Total Size** : 184 Bytes, Considering other properties, lets round this off at ***200 Bytes***.
+- Each request (page) will have around ten such tweets. hence the total size of each request will be 10 * 200 bytes = 2000 bytes and some matadata or about **2.5 Kb**.
+
+--- 
+
+#### Bandwidth - (unnessesary)
+
+184 bytes per tweet, 500 Billion read requests per month.
+500000000000 *10 /30 /24 /60 /60 = 1929000 ~ 2000000 or 2 million requests per second.
+
+Bandwidth needs to be at least 36000000 Bytes per second. Or 340 MBpS.

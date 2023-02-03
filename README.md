@@ -12,7 +12,7 @@
 #### // TODO: compose specific pages for the following heads
 
 - Introduction
-    1. Definition of High-level system design
+    1. [Definition of High-level system design](hld/README.md)
     1. Overview of Twitter
 - Overview of High-level System Design for Twitter
     1. Infrastructure
